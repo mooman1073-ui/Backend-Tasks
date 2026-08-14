@@ -1,0 +1,22 @@
+{
+  "name": "assignment-3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devEngines": {
+    "packageManager": {
+      "name": "pnpm",
+      "version": "^11.19.0",
+      "onFail": "download"
+    }
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
