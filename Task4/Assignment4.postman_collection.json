@@ -1,0 +1,165 @@
+{
+  "info": {
+    "name": "Assignment 4",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n    \"productName\": \"Juice\",\n    \"price\": 12.5,\n    \"stockQuantity\": 20,\n    \"supplierId\": 1\n}" },
+            "url": "{{baseUrl}}/products"
+          }
+        },
+        {
+          "name": "Get All Products",
+          "request": { "method": "GET", "url": "{{baseUrl}}/products" }
+        },
+        {
+          "name": "Get Product By ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/products/1" }
+        },
+        {
+          "name": "Update Product",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n    \"productName\": \"Updated Milk\",\n    \"price\": 18,\n    \"stockQuantity\": 45,\n    \"supplierId\": 1\n}" },
+            "url": "{{baseUrl}}/products/1"
+          }
+        },
+        {
+          "name": "Delete Product",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/products/1" }
+        },
+        {
+          "name": "Update Bread Price",
+          "request": { "method": "PATCH", "url": "{{baseUrl}}/products/bread/price" }
+        },
+        {
+          "name": "Delete Eggs",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/products/eggs" }
+        }
+      ]
+    },
+    {
+      "name": "Suppliers",
+      "item": [
+        {
+          "name": "Create Supplier",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n    \"supplierName\": \"FreshFoods\",\n    \"contactNumber\": \"01001234567\"\n}" },
+            "url": "{{baseUrl}}/suppliers"
+          }
+        },
+        {
+          "name": "Get All Suppliers",
+          "request": { "method": "GET", "url": "{{baseUrl}}/suppliers" }
+        },
+        {
+          "name": "Update Supplier",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n    \"supplierName\": \"FreshFoods Company\",\n    \"contactNumber\": \"01009999999\"\n}" },
+            "url": "{{baseUrl}}/suppliers/1"
+          }
+        },
+        {
+          "name": "Delete Supplier",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/suppliers/2" }
+        }
+      ]
+    },
+    {
+      "name": "Sales",
+      "item": [
+        {
+          "name": "Record Sale",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n    \"productId\": 1,\n    \"quantitySold\": 2,\n    \"saleDate\": \"2025-05-20\"\n}" },
+            "url": "{{baseUrl}}/sales"
+          }
+        },
+        {
+          "name": "Get All Sales",
+          "request": { "method": "GET", "url": "{{baseUrl}}/sales" }
+        },
+        {
+          "name": "Get Sales By Product",
+          "request": { "method": "GET", "url": "{{baseUrl}}/sales/product/1" }
+        }
+      ]
+    },
+    {
+      "name": "Database Changes",
+      "item": [
+        {
+          "name": "Add Category Column",
+          "request": { "method": "POST", "url": "{{baseUrl}}/database/products/category" }
+        },
+        {
+          "name": "Remove Category Column",
+          "request": { "method": "DELETE", "url": "{{baseUrl}}/database/products/category" }
+        },
+        {
+          "name": "Change Contact Number Length",
+          "request": { "method": "PATCH", "url": "{{baseUrl}}/database/suppliers/contact-number" }
+        },
+        {
+          "name": "Make Product Name Required",
+          "request": { "method": "PATCH", "url": "{{baseUrl}}/database/products/name-required" }
+        }
+      ]
+    },
+    {
+      "name": "Setup",
+      "item": [
+        {
+          "name": "Insert Required Data",
+          "request": { "method": "POST", "url": "{{baseUrl}}/setup-data" }
+        }
+      ]
+    },
+    {
+      "name": "Reports",
+      "item": [
+        {
+          "name": "Total Quantity Sold",
+          "request": { "method": "GET", "url": "{{baseUrl}}/reports/total-sales" }
+        },
+        {
+          "name": "Highest Stock Product",
+          "request": { "method": "GET", "url": "{{baseUrl}}/reports/highest-stock" }
+        },
+        {
+          "name": "Suppliers Starting With F",
+          "request": { "method": "GET", "url": "{{baseUrl}}/reports/suppliers-starting-f" }
+        },
+        {
+          "name": "Products Never Sold",
+          "request": { "method": "GET", "url": "{{baseUrl}}/reports/never-sold" }
+        },
+        {
+          "name": "Sales Details",
+          "request": { "method": "GET", "url": "{{baseUrl}}/reports/sales-details" }
+        }
+      ]
+    }
+  ]
+}
