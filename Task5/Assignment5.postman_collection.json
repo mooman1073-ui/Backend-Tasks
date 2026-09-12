@@ -1,0 +1,120 @@
+{
+  "info": {
+    "name": "Assignment 5",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Add User",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n    \"name\": \"Ahmed\",\n    \"email\": \"ahmed@gmail.com\",\n    \"password\": \"1234567\",\n    \"role\": \"admin\"\n}" },
+            "url": "{{baseUrl}}/users/signup"
+          }
+        },
+        {
+          "name": "Upsert User",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n    \"name\": \"Mona\",\n    \"email\": \"mona@gmail.com\",\n    \"password\": \"1234567\",\n    \"role\": \"user\"\n}" },
+            "url": "{{baseUrl}}/users/upsert/2"
+          }
+        },
+        {
+          "name": "Find User By Email",
+          "request": { "method": "GET", "url": "{{baseUrl}}/users/by-email?email=ahmed@gmail.com" }
+        },
+        {
+          "name": "Get User By ID",
+          "request": { "method": "GET", "url": "{{baseUrl}}/user/1" }
+        }
+      ]
+    },
+    {
+      "name": "Posts",
+      "item": [
+        {
+          "name": "Add Post",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n    \"title\": \"My First Post\",\n    \"content\": \"Today I learned Sequelize.\",\n    \"userId\": 1\n}" },
+            "url": "{{baseUrl}}/posts"
+          }
+        },
+        {
+          "name": "Get Post Details",
+          "request": { "method": "GET", "url": "{{baseUrl}}/posts/details" }
+        },
+        {
+          "name": "Get Post Comment Count",
+          "request": { "method": "GET", "url": "{{baseUrl}}/posts/comment-count" }
+        },
+        {
+          "name": "Delete Post",
+          "request": {
+            "method": "DELETE",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n    \"userId\": 1\n}" },
+            "url": "{{baseUrl}}/posts/1"
+          }
+        }
+      ]
+    },
+    {
+      "name": "Comments",
+      "item": [
+        {
+          "name": "Add Comments",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "[\n    {\n        \"content\": \"This is a great post\",\n        \"postId\": 1,\n        \"userId\": 1\n    },\n    {\n        \"content\": \"Very helpful\",\n        \"postId\": 1,\n        \"userId\": 2\n    },\n    {\n        \"content\": \"Thank you\",\n        \"postId\": 1,\n        \"userId\": 1\n    }\n]" },
+            "url": "{{baseUrl}}/comments"
+          }
+        },
+        {
+          "name": "Update Comment",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n    \"userId\": 1,\n    \"content\": \"Updated comment\"\n}" },
+            "url": "{{baseUrl}}/comments/1"
+          }
+        },
+        {
+          "name": "Find Or Create Comment",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": { "mode": "raw", "raw": "{\n    \"content\": \"Very helpful\",\n    \"postId\": 1,\n    \"userId\": 2\n}" },
+            "url": "{{baseUrl}}/comments/find-or-create"
+          }
+        },
+        {
+          "name": "Search Comments",
+          "request": { "method": "GET", "url": "{{baseUrl}}/comments/search?word=great" }
+        },
+        {
+          "name": "Get Newest Comments",
+          "request": { "method": "GET", "url": "{{baseUrl}}/comments/newest/1" }
+        },
+        {
+          "name": "Get Comment Details",
+          "request": { "method": "GET", "url": "{{baseUrl}}/comments/details/1" }
+        }
+      ]
+    }
+  ]
+}
