@@ -1,0 +1,167 @@
+{
+  "info": {
+    "name": "Assignment 6",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000"
+    }
+  ],
+  "item": [
+    {
+      "name": "01 Create Books Collection",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/collection/books"
+      }
+    },
+    {
+      "name": "02 Create Authors Collection",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"name\": \"Ahmed\"\n}"
+        },
+        "url": "{{baseUrl}}/collection/authors"
+      }
+    },
+    {
+      "name": "03 Create Capped Logs Collection",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/collection/logs/capped"
+      }
+    },
+    {
+      "name": "04 Create Books Title Index",
+      "request": {
+        "method": "POST",
+        "url": "{{baseUrl}}/collection/books/index"
+      }
+    },
+    {
+      "name": "05 Add One Book",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"title\": \"Future\",\n    \"author\": \"Ahmed\",\n    \"year\": 2020,\n    \"genres\": [\"Science Fiction\"]\n}"
+        },
+        "url": "{{baseUrl}}/books"
+      }
+    },
+    {
+      "name": "06 Add Books Batch",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "[\n    {\n        \"title\": \"Brave New World\",\n        \"author\": \"Aldous Huxley\",\n        \"year\": 1932,\n        \"genres\": [\"Science Fiction\"]\n    },\n    {\n        \"title\": \"The Time Traveler\",\n        \"author\": \"Sara\",\n        \"year\": 2005,\n        \"genres\": [\"Science Fiction\", \"Adventure\"]\n    },\n    {\n        \"title\": \"Clean Code\",\n        \"author\": \"Robert Martin\",\n        \"year\": 2008,\n        \"genres\": [\"Programming\"]\n    },\n    {\n        \"title\": \"Dark Night\",\n        \"author\": \"Omar\",\n        \"year\": 1998,\n        \"genres\": [\"Horror\"]\n    }\n]"
+        },
+        "url": "{{baseUrl}}/books/batch"
+      }
+    },
+    {
+      "name": "07 Add Log",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"action\": \"Book viewed\",\n    \"bookTitle\": \"Future\"\n}"
+        },
+        "url": "{{baseUrl}}/logs"
+      }
+    },
+    {
+      "name": "08 Update Future Year",
+      "request": {
+        "method": "PATCH",
+        "url": "{{baseUrl}}/books/Future"
+      }
+    },
+    {
+      "name": "09 Find Book By Title",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/title?title=Brave New World"
+      }
+    },
+    {
+      "name": "10 Find Books By Year Range",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/year?from=1990&to=2010"
+      }
+    },
+    {
+      "name": "11 Find Books By Genre",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/genre?genre=Science Fiction"
+      }
+    },
+    {
+      "name": "12 Skip And Limit Books",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/skip-limit"
+      }
+    },
+    {
+      "name": "13 Find Integer Years",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/year-integer"
+      }
+    },
+    {
+      "name": "14 Exclude Genres",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/exclude-genres"
+      }
+    },
+    {
+      "name": "15 Delete Books Before Year",
+      "request": {
+        "method": "DELETE",
+        "url": "{{baseUrl}}/books/before-year?year=2000"
+      }
+    },
+    {
+      "name": "16 Aggregate And Sort Books",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/aggregate1"
+      }
+    },
+    {
+      "name": "17 Aggregate Selected Fields",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/aggregate2"
+      }
+    },
+    {
+      "name": "18 Unwind Genres",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/aggregate3"
+      }
+    },
+    {
+      "name": "19 Join Books With Logs",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/books/aggregate4"
+      }
+    }
+  ]
+}
